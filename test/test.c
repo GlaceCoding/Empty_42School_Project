@@ -6,7 +6,7 @@
 /*   By: GlaceCoding <github.com/GlaceCoding>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:26:10 by GlaceCoding       #+#    #+#             */
-/*   Updated: 2021/10/10 22:45:02 by GlaceCoding      ###   ########.fr       */
+/*   Updated: 2021/10/11 14:07:08 by GlaceCoding      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ MU_TEST_SUITE(test_suite) {
 	MU_RUN_TEST(test_check);
 }
 
-int main(int argc, char *argv[]) {
+int main(void) {
 	MU_RUN_SUITE(test_suite);
 	MU_REPORT();
 	return MU_EXIT_CODE;
