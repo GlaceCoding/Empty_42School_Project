@@ -1,3 +1,5 @@
+.gitignore
+.vogignore
 .github/
 /test/
 /hooks/
