@@ -6,11 +6,15 @@
 /*   By: GlaceCoding <github.com/GlaceCoding>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:24:56 by GlaceCoding       #+#    #+#             */
-/*   Updated: 2021/10/11 14:32:03 by GlaceCoding      ###   ########.fr       */
+/*   Updated: 2021/10/11 14:38:14 by GlaceCoding      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	is_alphabet(char *c)
 {
+	while (*c != '\0')
+	{
+		c++;
+	}
 	return (1);
 }
