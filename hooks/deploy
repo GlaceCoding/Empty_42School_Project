@@ -28,7 +28,9 @@ function print_error {
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
 print_head '> stash changes'
+oldstash=$(git rev-parse -q --verify refs/stash)
 git stash push -m iceberg_temp_stash
+newstash=$(git rev-parse -q --verify refs/stash)
 
 print_head '1) Create `titanic_temp_branch` branch'
 git checkout -b titanic_temp_branch
@@ -64,5 +66,7 @@ print_head '5) Revert .gitignore changes' # Delete temp branch'
 git checkout "$current_branch" -- .gitignore
 #git branch -D titanic_temp_branch
 
-print_head '> pop stash'
-git stash pop
+if [ "$oldstash" != "$newstash" ]; then
+  print_head '> pop stash'
+  git stash pop
+fi
