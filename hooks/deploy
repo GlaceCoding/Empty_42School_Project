@@ -30,7 +30,7 @@ current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 print_head '> stash changes'
 git stash push -m iceberg_temp_stash
 
-print_head '1) Making the temp branch…'
+print_head '1) Create `titanic_temp_branch` branch'
 git checkout -b titanic_temp_branch
 if [[ $? != 0 ]]; then
 	print_error '> the temp branch already exists, deleting the temp branch...'
@@ -60,9 +60,9 @@ print_head '4) Blank commit'
 git checkout "$current_branch"
 git commit --allow-empty -m "[Glace build] Push to vogsphere/master$(echo -e -n "\nUntrack ignored files for vogsphere :\n$untraked")"
 
-print_head '4) Delete temp branch'
+print_head '5) Revert .gitignore changes' # Delete temp branch'
 git checkout "$current_branch" -- .gitignore
-git branch -D titanic_temp_branch
+#git branch -D titanic_temp_branch
 
 print_head '> pop stash'
 git stash pop
