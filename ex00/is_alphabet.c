@@ -6,12 +6,15 @@
 /*   By: GlaceCoding <github.com/GlaceCoding>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:24:56 by GlaceCoding       #+#    #+#             */
-/*   Updated: 2021/10/10 22:45:05 by GlaceCoding      ###   ########.fr       */
+/*   Updated: 2021/10/13 13:17:35 by GlaceCoding      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 int	is_alphabet(char *c)
 {
+	printf("Hello world!");
 	while (*c != '\0')
 	{
 		if (('a' <= *c && *c <= 'z') == 0
