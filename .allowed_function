@@ -1,0 +1,11 @@
+# WHITELIST FOR ALLOWED FUNCTION IN .C FILE
+#
+# 1) For one file
+#
+# filename.c:printf
+#
+# 2) Everywhere
+#
+# *:printf
+#
+

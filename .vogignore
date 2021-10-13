@@ -3,5 +3,6 @@
 .github/
 /test/
 /hooks/
+.allowed_function
 README.md
 CV.md

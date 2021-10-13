@@ -6,12 +6,17 @@
 /*   By: GlaceCoding <github.com/GlaceCoding>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:26:10 by GlaceCoding       #+#    #+#             */
-/*   Updated: 2021/10/11 14:07:08 by GlaceCoding      ###   ########.fr       */
+/*   Updated: 2021/10/13 13:21:43 by GlaceCoding      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "minunit.h"
 #include "../ex00/is_alphabet.c"
+
+MU_TEST(allowed_function) {
+	mu_check(system("sh ./test/allowed_function.sh") == 0);
+}
 
 MU_TEST(test_check) {
 	mu_check(is_alphabet("abc") == 1);
@@ -27,6 +32,7 @@ MU_TEST(test_check) {
 }
 
 MU_TEST_SUITE(test_suite) {
+	MU_RUN_TEST(allowed_function);
 	MU_RUN_TEST(test_check);
 }
 
