@@ -15,9 +15,13 @@ cd "$(git rev-parse --show-cdup)"
 
 FOLDER_C_FILES="./ex*"
 
-find . -type f -iname *.c -path "$FOLDER_C_FILES" -execdir gcc -c -fno-builtin {} ";"
+find . -type f -iname "*.c" -path "$FOLDER_C_FILES" -execdir gcc -c -fno-builtin {} ";"
 
-used=$(find . -type f -iname *.o -path "$FOLDER_C_FILES" -execdir nm -uA {} ";" | sed 's/.\/\(.*\): *U /\1:/g' | sed 's/\.o:/.c:/')
+if [ "Darwin" == "$(uname -s)" ]; then
+	used=$(find . -type f -iname "*.o" -path "$FOLDER_C_FILES" -execdir nm -uA {} ";" | sed 's/\(.*\): \_/\1:/g' | sed 's/\.o:/.c:/')
+else
+	used=$(find . -type f -iname "*.o" -path "$FOLDER_C_FILES" -execdir nm -uA {} ";" | sed 's/.\/\(.*\): *U /\1:/g' | sed 's/\.o:/.c:/')
+fi
 
 echo "$used"
 for scope in $used; do
