@@ -7,6 +7,11 @@ Le contenu du repos [git@github.com:GlaceCoding/exemple_rendu_vogsphere.git](htt
 sh ./hooks/deploy
 ```
 
+**Objectif du script :** Avoir un seul repo github/vogsphere (intra 42) et push votre répertoire de rendu en une seule commande.
+
+Plus d'explication sur le script de déploiement : [hooks/README.md#script-deploy](https://github.com/GlaceCoding/exemple_rendu/tree/main/hooks#script-deploy)  
+
+
 # Init step
 
 ## 1) Init the repos
