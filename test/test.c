@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: GlaceCoding <github.com/GlaceCoding>       +#+  +:+       +#+        */
+/*   By: gphilipp <gphilipp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:26:10 by GlaceCoding       #+#    #+#             */
-/*   Updated: 2021/10/13 13:21:43 by GlaceCoding      ###   ########.fr       */
+/*   Updated: 2021/11/08 12:27:49 by gphilipp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minunit.h"
-#include "../ex00/is_alphabet.c"
+#include "../includes/rendu.h"
 
 MU_TEST(allowed_function) {
 	mu_check(system("sh ./test/allowed_function.sh") == 0);

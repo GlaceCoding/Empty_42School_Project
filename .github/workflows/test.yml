@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: compile test
-      run: gcc -Wall -Werror -Wextra test/test.c
+    - name: install norminette
+      run: python3 -m pip install norminette
     - name: test
-      run: ./a.out
+      run: sh test/test.sh
