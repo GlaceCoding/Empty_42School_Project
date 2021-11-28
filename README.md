@@ -23,6 +23,6 @@ After a `git clone`, you have to use this command : `git config core.hooksPath h
 Add vogsphere remote with `git remote` :
 
 ```sh
-git remote add vogsphere https://github.com/GlaceCoding/exemple_rendu_vogsphere.git
+git remote add vogsphere git@github.com:GlaceCoding/exemple_rendu_vogsphere.git
 ```
 
