@@ -1,4 +1,10 @@
-*.exe
 *.out
 *.o
+*.a
+*.dSYM
 /rendu
+/rendu_debug
+/rendu_sanitize
+/rendu_leaks
+/*.txt
+.tmp_*

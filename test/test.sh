@@ -1,9 +1,19 @@
 #!/bin/sh
 
+HEAD="./includes/"
+LIBS=""
+
 make
 if [[ $? == 0 ]]; then
-	gcc ./test/test.c ./srcs/is_alphabet.c && ./a.out && rm ./a.out
+	SRCS=$(find ./srcs -iname "*.c" ! -name "main.c")
+
+	echo "======= PROJECT DIFFS ======="
+	./test/diff.sh "Hello world\n"
+
+	echo "======= PROJECT TESTS ======="
+	gcc -g -o test.out ./test/test.c $SRCS $LIBS -fno-builtin -I "$HEAD" && ./test.out && rm ./test.out
+
+	echo "========= NORMINETTE ========"
 	norminette ./srcs/*.c ./includes/*.h | grep -v ": OK!"
-	exit 0
+	echo "============================="
 fi
-exit 1

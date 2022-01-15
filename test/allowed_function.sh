@@ -16,11 +16,12 @@ cd "$(git rev-parse --show-cdup)"
 FOLDER_C_FILES="./srcs*"
 HEAD="./includes/"
 
-# If you don't want to watch subdir add `-maxdepth 1`:
 find . -type f -iname "*.c" -path "$FOLDER_C_FILES" -exec gcc -I "$HEAD" -c -fno-builtin -fno-stack-protector {} ";"
 
 used=$(find . -type f -iname "*.o" -path "$FOLDER_C_FILES" -execdir nm -uA {} ";" | sed 's/\(.*\): \_/\1:/g' | sed 's/\.o:/.c:/')
-myfc=$(find . -type f -iname "*.o" -path "$FOLDER_C_FILES" -execdir nm -UA {} ";" | sed 's/\(.*\): [0-9a-f]* T \_/\1:/g' | sed 's/\.o:/.c:/')
+myfc=$(find . -type f -iname "*.o" -path "$FOLDER_C_FILES" -execdir nm -UA {} ";" | sed 's/\(.*\): [0-9a-f]* [Tt] \_/\1:/g' | sed 's/\.o:/.c:/')
+
+rm -f *.o
 
 echo "$used"
 echo "#declared function\n\n$myfc" > test/.my_declared_function
