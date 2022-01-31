@@ -26,7 +26,7 @@ test dans `.vogignore`, ils seront commit/push sur votre repo Github mais pas su
 ### Comment ajouter ce script à votre repo ?
 
  1. Mettre le fichier dans votre repository git, par exemple : `<repository-git>/hooks/deploy` (où `<repository-git>` contient `./.git`).
- 2. Faire `git remote set-url vogsphere <git@vogsphere.42.fr:vogsphere/intra-uuid-...>`.
+ 2. Faire `git remote add vogsphere <git@vogsphere.42.fr:vogsphere/intra-uuid-...>`.
  3. Créer un `.gitignore` et `.vogignore` :
      - Le `.gitignore` doit ignorer les : `*.o`, `*.out`, `*.a`, `.DS_STORE` ([exemple](https://github.com/GlaceCoding/exemple_rendu/blob/fef8a283e6041cf27e014b8bf6beeaf39521dbef/.gitignore#L2-L3))
      - Le `.vogignore` doit ignore les fichiers/dossiers suivants : `.gitignore`, `.vogignore`, `/hooks/`…
