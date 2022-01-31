@@ -11,7 +11,6 @@
 #                                                                            #
 # ########################################################################## #
 
-cd "$(git rev-parse --show-cdup)"
 
 function print_head {
 	echo "\033[0;36m"
@@ -24,6 +23,13 @@ function print_error {
 	echo "$1"
 	echo "\033[00m"
 }
+
+if ! git ls-remote --exit-code vogsphere &> /dev/null; then
+	print_error '! error remote vogsphere does not exist.'
+	exit 1
+fi
+
+cd "$(git rev-parse --show-cdup)"
 
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
@@ -55,7 +61,6 @@ untraked=$(git ls-files --ignored --exclude-standard)
 git ls-files --ignored --exclude-standard | xargs git rm -r --cached 
 
 print_head '3) Push to vogsphere/master'
-
 git commit -m '[Glace build] Untrack ignored files for vogsphere'
 git push -f vogsphere titanic_temp_branch:master
 
