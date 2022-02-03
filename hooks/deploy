@@ -24,7 +24,7 @@ function print_error {
 	echo "\033[00m"
 }
 
-if ! git ls-remote --exit-code vogsphere &> /dev/null; then
+if ! git config remote.vogsphere.url > /dev/null; then
 	print_error '! error remote vogsphere does not exist.'
 	exit 1
 fi
