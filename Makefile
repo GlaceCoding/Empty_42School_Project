@@ -15,6 +15,17 @@ SRC	  = main.c \
 		is_alphabet.c \
 
 
+# <!-- pre='srcs/' path='./' match='*_bonus.c' exclude='main_bonus.c' pos='1' template='		{0} \' -->
+SRC_BONUS = main_bonus.c \
+		is_alphabet_bonus.c \
+
+
+ifdef BONUS
+	SRC += $(SRC_BONUS)
+	_tmpsrc := $(SRC)
+	SRC = $(filter-out main.c, $(_tmpsrc))
+endif
+
 # <!-- pre='includes/' path='./' match='*.h' exclude='rendu.h' pos='1' template='		{0} \' -->
 HDEP  = rendu.h \
 
@@ -30,6 +41,10 @@ PRE	  = ./srcs/
 HEAD  = ./includes/
 
 NAME  = rendu
+
+ifdef BONUS
+	NAME = rendu_bonus
+endif
 
 CC    = gcc
 
@@ -57,6 +72,9 @@ libs_clean:
 
 libs_fclean: libs_clean
 #	make -C $(LIBLIST) fclean
+
+bonus: $(NAME)
+	@make BONUS=1
 
 $(NAME): $(OBJS) $(HDEPS)
 	$(CC) $(CFLAGS) -o $(NAME) $(COMPILEFLAGS) $(OBJS)
