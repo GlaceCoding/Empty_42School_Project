@@ -60,9 +60,9 @@ all: libs $(NAME)
 
 #LIBLIST = vendor/liblist/
 
-libs: #$(LIBLIST)liblist.a
+LIBS = #$(LIBLIST)liblist.a
 
-list: #$(LIBLIST)liblist.a
+#list: $(LIBLIST)liblist.a
 
 #$(LIBLIST)liblist.a:
 #	make -C $(LIBLIST)
@@ -76,14 +76,14 @@ libs_fclean: libs_clean
 bonus: $(NAME)
 	@make BONUS=1
 
-$(NAME): $(OBJS) $(HDEPS)
+$(NAME): $(LIBS) $(OBJS) $(HDEPS)
 	$(CC) $(CFLAGS) -o $(NAME) $(COMPILEFLAGS) $(OBJS)
 
 # Usage: make debug && lldb rendu_debug -o run
-$(NAME)_debug: $(SRCS) $(HDEPS)
+$(NAME)_debug: $(LIBS) $(SRCS) $(HDEPS)
 	$(CC) $(CFLAGS) -g -o $(NAME)_debug -I $(HEAD) $(COMPILEFLAGS) $(SRCS)
 
-$(NAME)_sanitize: $(SRCS) $(HDEPS)
+$(NAME)_sanitize: $(LIBS) $(SRCS) $(HDEPS)
 	$(CC) $(CFLAGS) -fsanitize=address -g -o $(NAME)_sanitize -I $(HEAD) $(COMPILEFLAGS) $(SRCS)
 
 # Usage: make leaks && ./rendu_leaks
@@ -118,13 +118,14 @@ dclean: fclean
 
 clean:
 ifndef BONUS
-		make -s BONUS=1 clean;
+	make -s BONUS=1 clean;
 endif
 	rm -f $(OBJS)
 
 fclean: libs_fclean clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	make all
 
-.PHONY: all clean dclean fclean debug sanitize leaks libs list libs_clean libs_fclean re
+.PHONY: all clean dclean fclean debug sanitize leaks list libs_clean libs_fclean re
