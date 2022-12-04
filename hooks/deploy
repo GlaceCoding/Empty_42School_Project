@@ -58,7 +58,7 @@ print_head '2) Apply .vogignore'
 echo "$(cat .gitignore)\n# .vogignore :\n$(cat .vogignore)\n" | sed 's/\n\n//g' >> .a2k4
 mv -f .a2k4 .gitignore
 untraked=$(git ls-files --ignored --exclude-standard)
-git ls-files --ignored --exclude-standard | xargs git rm -r --cached 
+git ls-files --ignored --exclude-standard | tr \\n \\0 | xargs -0 git rm -r --cached 
 
 print_head '3) Push to vogsphere/master'
 git commit -m '[Glace build] Untrack ignored files for vogsphere'
