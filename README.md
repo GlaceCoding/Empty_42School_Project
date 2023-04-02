@@ -3,7 +3,7 @@
 This repository is an empty project for [42School](https://42.fr/) Project. It has some useful things ready to use for any 42project:
 
  - Ready to use unitest for your project;
- - Makefile rules to debug with `lldb` or `sanitize`;
+ - Makefile rules to debug with `lldb`, `sanitize` or `leaks`;
  - Makefile to check leaks;
  - Refresh makefile files list with [Sublime 42 tools](https://github.com/GlaceCoding/sublime-42-tools#in-action-);
  - Deployment script to make a rendered project for Moulinette & defense (this script will ignore all debug & test file for your last pull request) `sh ./hooks/deploy`.
